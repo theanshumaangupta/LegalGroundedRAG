@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  ai-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:7860" # Maps port 8000 on your machine to port 7860 in the container
+    volumes:
+      # This ensures that your uploaded PDFs and vector indexes are saved
+      # to your actual hard drive and aren't lost when the container restarts.
+      - ./data:/code/data
+    env_file:
+      - .env # Automatically loads your API keys from the .env file
+    restart: unless-stopped

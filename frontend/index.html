@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Processing</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <h1>Document Processing Pipeline</h1>
+
+    <!-- Top Control Bar: UPLOAD BUTTON | INPUT | ASK -->
+    <div class="top-bar">
+        <div class="upload-section">
+            <input type="file" id="fileInput" accept=".pdf,.txt">
+            <button onclick="uploadFile()">Upload & Process</button>
+        </div>
+        <div class="prompt-section">
+            <input type="text" id="task-prompt-input" placeholder="Task Prompt">
+        </div>
+        <div class="ask-section">
+            <button id="query-btn" onclick="queryPrompt()" disabled>Ask</button>
+            <button id="show-prompts-btn" onclick="showPrompts()">Prompts</button>
+        </div>
+    </div>
+
+    <!-- Workspace Columns: source tab | draft tab -->
+    <div class="layout">
+        <!-- Left Column: Source Document Chunks -->
+        <div class="source-panel">
+            <div class="panel-header">
+                <h2>Source Document</h2>
+                <span id="source-status-badge" class="badge">No document loaded</span>
+            </div>
+            <div id="source-chunks-container" class="scroll-container">
+                <div class="placeholder">Upload a document to view source evidence chunks here.</div>
+            </div>
+        </div>
+
+        <!-- Right Column: Draft Document -->
+        <div class="draft-panel">
+            <div class="panel-header">
+                <h2>Draft Document</h2>
+                <div class="draft-controls">
+                    <button id="toggle-view" class="toggle-btn active" onclick="switchDraftMode('view')">View</button>
+                    <button id="toggle-edit" class="toggle-btn" onclick="switchDraftMode('edit')">Edit</button>
+                    <button id="submit-feedback-btn" onclick="submitFeedback()" disabled>Submit Feedback</button>
+                </div>
+            </div>
+            <div class="draft-content">
+                <div id="draft-status" class="status">Standby! LLM is Processing</div>
+                
+                <!-- View Mode Container -->
+                <div id="draft-view-content" class="draft-display">
+                    <div class="placeholder">Nothing to show here</div>
+                </div>
+                
+                <!-- Edit Mode Container -->
+                <textarea id="operator-edit" style="display: none;"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prompts Modal -->
+    <div id="prompts-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closePrompts()">&times;</span>
+            <h2>System Prompts</h2>
+            <div id="prompts-container"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

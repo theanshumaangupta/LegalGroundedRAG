@@ -1,0 +1,321 @@
+body {
+    font-family: sans-serif;
+    margin: 20px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+/* Horizontal Top Control Bar */
+.top-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.upload-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.prompt-section {
+    flex: 1;
+}
+
+.prompt-section input {
+    width: 100%;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.ask-section button,
+.upload-section button,
+#submit-feedback-btn {
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.ask-section button:hover,
+.upload-section button:hover,
+#submit-feedback-btn:hover {
+    background-color: #ddd;
+}
+
+.ask-section button:disabled,
+#submit-feedback-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Workspace side-by-side panels */
+.layout {
+    display: flex;
+    gap: 30px;
+    height: calc(100vh - 120px);
+}
+
+.source-panel,
+.draft-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.panel-header h2 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.panel-title-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.badge {
+    font-size: 12px;
+    background-color: #eee;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: #555;
+}
+
+.scroll-container,
+.draft-content {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #fff;
+    min-height: 0;
+    scroll-behavior: smooth;
+}
+
+/* Hide draft elements during loading state and show status instead */
+.draft-content.loading #draft-view-content,
+.draft-content.loading #operator-edit {
+    display: none !important;
+}
+
+.draft-content.loading .status {
+    display: block !important;
+}
+
+
+.placeholder {
+    color: #666;
+    font-style: italic;
+}
+
+/* Source Document Chunks */
+.source-chunks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.source-chunk-card {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+    transition: background-color 0.2s, border-color 0.2s;
+    scroll-margin-top: 10px;
+    scroll-margin-bottom: 10px;
+}
+
+.source-chunk-card-header {
+    font-weight: bold;
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+/* Highlighted chunk style matches original chunk-box color palette */
+.source-chunk-card.highlighted {
+    background: #eef7ff;
+    border: 1px solid #cce3f6;
+}
+
+/* Draft View Controls */
+.draft-controls {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-btn {
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-right: none;
+    font-size: 14px;
+}
+
+.toggle-btn:last-child {
+    border-right: 1px solid #ccc;
+}
+
+.toggle-btn.active {
+    background-color: #ccc;
+    font-weight: bold;
+}
+
+/* Status info styling */
+.status {
+    display: none;
+    margin-bottom: 10px;
+    font-style: italic;
+    color: #666;
+    text-align: center;
+    padding: 40px 0;
+}
+
+/* Draft display matching original */
+.draft-display {
+    min-height: 50px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.draft-display h1,
+.draft-display h2,
+.draft-display h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #111;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.draft-display h1 { font-size: 1.8em; }
+.draft-display h2 { font-size: 1.4em; }
+.draft-display h3 { font-size: 1.2em; }
+
+.draft-display ul,
+.draft-display ol {
+    margin-top: 0;
+    margin-bottom: 12px;
+    padding-left: 20px;
+}
+
+.draft-display li {
+    margin-bottom: 6px;
+}
+
+.draft-display p {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+/* Source links inside draft matching original */
+.source-link {
+    color: #0056b3;
+    font-weight: bold;
+    cursor: pointer;
+    background: #eef;
+    padding: 0 4px;
+    border-radius: 3px;
+    transition: background 0.2s;
+}
+
+.source-link:hover {
+    background: #b8daff;
+}
+
+/* Edit Mode Textarea matching original */
+#operator-edit {
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    font-family: monospace;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    resize: none;
+}
+
+/* Modal */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.5); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-height: 80vh;
+    overflow-y: auto;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.prompt-block {
+    margin-bottom: 20px;
+    background: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.prompt-block h3 {
+    margin-top: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.prompt-block pre {
+    white-space: pre-wrap;
+    font-size: 13px;
+    color: #555;
+    margin: 0;
+}

@@ -1,0 +1,19 @@
+# --- Environment / Secrets ---
+# Crucial: Never upload your private API keys!
+.env
+
+data/chroma_db/
+data/raw/
+*.pdf
+venv/
+.venv/
+env/
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+.DS_Store
+Thumbs.db
