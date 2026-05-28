@@ -46,6 +46,10 @@ Simple UI : Provided in frontend folder.
 
 # Architecture Overview
 
+Flowchart
+https://excalidraw.com/#json=pFmD3wKpI2N7aBotLqjRP,DXfkBFqq-GGIp673Ul0XPA
+
+Details
 The pipeline is split into four primary segments, mapping directly to the assessment requirements.
 
 Segment 1: Document Processing

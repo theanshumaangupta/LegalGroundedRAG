@@ -1,1 +1,7 @@
-{}
+{
+    "Commercial Property Purchase and Sale Agreement": [
+        "Use '=>' symbol after section headers (e.g., '### 01. SUMMARY OF REVIEWED ATTRIBUTES =>')",
+        "Prefix section numbers with '0' (e.g., '### 01.' instead of '### 1.')",
+        "Use '=>' symbol after custom headers (e.g., '### 02. CORE CONTRACTUAL FINDINGS =>')"
+    ]
+}
